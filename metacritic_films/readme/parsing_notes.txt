@@ -1,0 +1,41 @@
+for table in topten.find_all("table"):
+
+    "" so im going to have to do something for <tr> incrementation. ""
+
+    for critics in table.find_all("th"):
+        for critic in critics:
+            list.append(critic.text)
+    
+    for films in table.find_all("td"):
+        for film in films:
+            list.append(film.text)
+
+
+so here's the thing --> for every table row (<tr>) that is a critic name
+I want to add just the following film data that is contained in a <tr> (because 
+for some reason all of the critics and films are contained seperately within
+table rows). So i want to increment in pairs where I'm kinda thinking like this:
+
+    critics = total number of critics #(its like 300)
+    total = all of the <tr>'s --> which is critics + film lists
+    critic_count = 0
+
+    while critic_count <= total:
+        i = critic_count; i++; i <= critic_count + 2:
+            temp_list.append(total[critic_count])
+        final_list.append(temp_list)
+        critic_count + 2
+
+    *See ListPairingDemo.py for a better example
+        
+
+Of note regarding the use of <tr> as a tag of interest:
+BS4 allows the passing of a list or dict into the find_all method,
+whereby I could have chnaged this --> tables.find_all("tr") --> to this
+--> tables.find_all({'th': True, 'td' :True})
+but since for some reason, as mentioned on line 14, <tr> conveniently only 
+contains critic name and films, so what I have in parsing_v1 should work for now.
+
+5/9/22 6pm: now i need to figure out how to switch "Staff consensus"
+with <caption>.
+can i just use an if statement?? yes, yes i can
