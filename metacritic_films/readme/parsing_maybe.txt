@@ -1,0 +1,11 @@
+for table in topten.find_all("table"):
+
+    "" so im going to have to do something for <tr> incrementation. ""
+
+    for critics in table.find_all("th"):
+        for critic in critics:
+            list.append(critic.text)
+    
+    for films in table.find_all("td"):
+        for film in films:
+            list.append(film.text)
