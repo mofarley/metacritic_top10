@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import csv
-with open("/Users/mosesfarley/Documents/metacritic_films/sources/Film Critic Top 10 Lists - Best Movies of 2021 - Metacritic.html", "r") as f:
+with open("metacritic_films\sources\Film Critic Top 10 Lists - Best Movies of 2021 - Metacritic.html", "r") as f:
     topten = BeautifulSoup(f, "html.parser")
 
 table = topten.find("table")

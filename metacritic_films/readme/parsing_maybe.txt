@@ -9,3 +9,20 @@ for table in topten.find_all("table"):
     for films in table.find_all("td"):
         for film in films:
             list.append(film.text)
+
+
+so here's the thing --> for every table row (<tr>) that is a critic name
+I want to add just the following film data that is contained in a <tr> (because 
+for some reason all of the critics and films are contained seperately within
+table rows). So i want to increment in pairs where I'm kinda thinking like this:
+
+    critics = total number of critics #(its like 300)
+    total = all of the <tr>'s --> which is critics + film lists
+    critic_count = 0
+
+    while critic_count <= total:
+        i = critic_count; i++; i <= critic_count + 2:
+            temp_list.append(total[critic_count])
+        final_list.append(temp_list)
+        critic_count + 2
+        
