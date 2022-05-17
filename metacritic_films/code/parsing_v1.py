@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import csv
-with open("metacritic_films\sources\Film Critic Top 10 Lists - Best Movies of 2021 - Metacritic.html", "r") as f:
+with open("metacritic_films/sources/Film Critic Top 10 Lists - Best Movies of 2021 - Metacritic.html", "r") as f:
     topten = BeautifulSoup(f, "html.parser")
 
 tables = topten.find_all("table")
@@ -35,7 +35,20 @@ for table in tables:
         # more than two <tr>'s in certain tables
         fav_films = {output_row[critic_index]: output_row[films_index]}
         output_rows.append(fav_films)
-print(output_rows)
+#print(output_rows)
 
+csv_file = "2021.csv"
+csv_columns = ["Critic/Publisher", "Films"]
+
+try:
+    with open(csv_file, 'w') as csvfile:
+        write = csv.DictWriter(csvfile, fieldnames = csv_columns)
+        for row in output_rows:
+            for key, value in row.items():
+                write.writerow({"Critic/Publisher": key, 'Films': value})
+            #need to figure out how to take 'Films' out of list form. Do I want to fieldname 1-10?
+        
+except IOError:
+    print('IOerror')
 
 #TO DO: export output_rows to a csv and make program work over all review years!
