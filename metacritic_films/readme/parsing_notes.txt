@@ -1,0 +1,60 @@
+for table in topten.find_all("table"):
+
+    "" so im going to have to do something for <tr> incrementation. ""
+
+    for critics in table.find_all("th"):
+        for critic in critics:
+            list.append(critic.text)
+    
+    for films in table.find_all("td"):
+        for film in films:
+            list.append(film.text)
+
+
+so here's the thing --> for every table row (<tr>) that is a critic name
+I want to add just the following film data that is contained in a <tr> (because 
+for some reason all of the critics and films are contained seperately within
+table rows within each tablebody tag). So i want to increment in pairs where I'm kinda thinking like this:
+
+    critics = total number of critics #(its like 300)
+    total = all of the <tr>'s --> which is critics + film lists
+    critic_count = 0
+
+    while critic_count <= total:
+        i = critic_count; i++; i <= critic_count + 2:
+            temp_list.append(total[critic_count])
+        final_list.append(temp_list)
+        critic_count + 2
+
+    *See ListPairingDemo.py for a better example
+        
+if count starts at zero, it ends up at two at the end of the
+i loop. so if we're looking for (example) a [0] and [1] index for critics and films
+respectively then we subtract count by 2 and 1 to get the desired index values.
+The while loop this falls under will then look at blocks of 2 <tr>'s corresponding
+to a critic and their 10 films. It exits once "count" exceed the # of <tr>'s in
+a table. 
+
+Of note regarding the use of <tr> as a tag of interest:
+BS4 allows the passing of a list or dict into the find_all method,
+whereby I could have chnaged this --> tables.find_all("tr") --> to this
+--> tables.find_all({'th': True, 'td' :True})
+but since for some reason, as mentioned on line 14, <tr> conveniently only 
+contains critic name and films, so what I have in parsing_v1 should work for now.
+
+5/9/22 6pm: now i need to figure out how to switch "Staff consensus"
+with <caption>.
+can i just use an if statement?? yes, yes i can
+
+** Parsing_v2 is changing the output from a dictionary of {critic: film list}
+from v1 to a dictionary output of {critic: 'critic name', one: '#1 film', two: '#2 film, etc}
+--> SCRATCH ALL THAT SHIT: let's just use lists for all this and stop trying to force 
+dictionaries to work
+
+In beautifulsoup --> figure out how to retrieve items via tag value --> parsing_tests
+ex: There is the problem of unordered/unranked films lists. If I want to
+only return films that are ranked 1-10, I could look to return <li> tags
+with attribute values of "value = 1-10". 
+** For future implementation: link movie ranks with the <li> value attribute. This also enables
+searching straight from the html file, although searching can also be done once data is parced to
+csv file
