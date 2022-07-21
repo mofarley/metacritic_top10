@@ -16,8 +16,8 @@ for release_year in range(2015, 2022):
               film_set.add((value,))
 with sqlite3.connect('/Users/mosesfarley/metacritic_top10/metacritic_films/TopTen.db') as c:
   TopTen = c.cursor()
-  #for film in film_set:
-  TopTen.executemany('INSERT INTO films(title) VALUES (?);', film_set)
+  for film in film_set:
+    TopTen.execute('INSERT INTO films(title) VALUES (?);', film)
   #for critic in critic_set:
   TopTen.executemany('INSERT INTO critics(critic_name) VALUES (?);', critic_set)
   for release_year in range(2015, 2022):
@@ -41,3 +41,5 @@ with sqlite3.connect('/Users/mosesfarley/metacritic_top10/metacritic_films/TopTe
           number_rank += 1
   TopTen.executemany('INSERT INTO rankings VALUES (?, ?, ?)', rankings_list)
   c.commit()
+
+  #The count of film titles is far too high --> see if for loop fixes it. 
