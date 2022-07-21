@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    User/Critic Film Recommendation Matrix!
+{% endblock %}
+
+{% block main %}
+<h2>User Favorite 2015-2021</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Descending order:</th>
+        </tr>
+    </thead>
+    {% for movie in user_favs %}
+        <tr>
+            <td>{{ movie }}</td>
+        </tr>
+    {% endfor %}
+
+{% endblock %}
