@@ -19,8 +19,7 @@ def apology(code=400):
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    #film_selection = db.cursor()
-    #To Do --> going to text a full text search
+    titles = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/databases/TopTen.db')
     if request.method == "POST":
         film1 = request.form.get("film_one")
         film2 = request.form.get("film_two")
@@ -34,10 +33,25 @@ def home():
         film10 = request.form.get("film_ten")
         
         user_favs = {1:film1, 2:film2, 3:film3, 4:film4, 5:film5, 6:film6, 7:film7, 8:film8, 9:film9, 10:film10}
+        #dict of user film rankings 
+        
+        user_id = find_user_id()
+        rankings = add_user(user_favs, user_id)
+        critic_matches = cosine_similarity(user_id, rankings)
+        #for above 3: see helper.py
+        
+        critics = pd.read_sql('SELECT * FROM critics', titles)
 
-        return render_template("user_films.html", user_favs=user_favs)
+        match_filter = critics['id'].isin(critic_matches)
+        #basic description of how panda filtering works in helpers.py
+        
+        output = critics[match_filter]
+
+        output = output['critic_name'].tolist()
+
+        return render_template("user_films.html", user_favs=output)
+   
     else:
-        titles = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/databases/TopTen.db')
 
         movies = pd.read_sql('SELECT title FROM films', titles)
 
@@ -47,4 +61,12 @@ def home():
 
         return render_template("home.html", film_list=film_list)
 
-        #To Do --> Finish flask work(figure out redirect and render_template stuff)
+        #TO DO
+        # 1. write descriptions for helper functions  DONE
+        # 2. user_films.html: show cosine scores next to critic names. --> down the road graphic display of calculation?
+        # 3. user_films.html: provide links on critic names to list of their favorite films
+        # 4. think about changing input layout on home.html... make ranking of favorite films an option?
+        # 5. Grindy but... add top 10's for 2011 to 2014
+        # ROUGH IDEAS
+        # 6. import letterboxd lists???
+        # 7. Add film recs based on critic recs (see "collaborative filtering recommendation engine for Anime")
