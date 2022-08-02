@@ -9,12 +9,14 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Descending order:</th>
+            <th>Similar Critics</th>
+            <th>Cosine Similarity Score</th>
         </tr>
     </thead>
-    {% for movie in user_favs %}
+    {% for i in range(length) %}
         <tr>
-            <td>{{ movie }}</td>
+            <td>{{ user_favs[i] }}</td>
+            <td>{{ scores[i] }}</td>
         </tr>
     {% endfor %}
 

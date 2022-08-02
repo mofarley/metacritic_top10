@@ -58,3 +58,23 @@ with attribute values of "value = 1-10".
 ** For future implementation: link movie ranks with the <li> value attribute. This also enables
 searching straight from the html file, although searching can also be done once data is parced to
 csv file
+
+
+HTML manual prep before parsing:
+1. Delete entire <div class="masthead" 
+...
+</div>
+2. Delete "<p class="smaller"><span class="correction">Added in final update ... </p>" through
+"<table width="100%" border="0" cellspacing="0" class="listtable">
+            <caption>
+            Films Mentioned on Most Critic Top 10 Lists - 2014
+            </caption>
+            ...
+</table>"
+3. Delete <div class="story_stats"> ... </div>
+3. Delete <table width="100%" border="0" cellspacing="0" class="listtable">
+4. Delete <div class="module comments" id="comments"> ... </div>
+5. Delete <div class="module supplements_module popular_stories" id="supplementary-nav"> ... </div>
+6. Delete <div class="module stories_module"> ... </div> 
+7. Delete <div class="module recent_comments"> ... </div>
+8. Delete <div id="mastfoot"> ... </div>

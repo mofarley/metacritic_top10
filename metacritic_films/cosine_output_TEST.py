@@ -33,6 +33,8 @@ def user_test():
     for a in user_film_randomizer:
         temp_dict.update({count: titles.at[a, 'title']})
         count += 1
+    print("\n")
+    print(user_film_randomizer)
 
     return temp_dict
 
@@ -43,7 +45,6 @@ critic_matches = cosine_similarity(user_id, rankings)
 
 
 #len == 2044
-
 print(critic_matches)
 
 # skip zero values 
