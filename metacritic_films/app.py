@@ -42,22 +42,36 @@ def home():
         
         critics = pd.read_sql('SELECT * FROM critics', titles)
 
-        match_filter = critics['id'].isin(critic_matches)
+        match_filter = critics['id'].isin(critic_matches[0])
         #basic description of how panda filtering works in helpers.py
         
         output = critics[match_filter]
 
         output = output['critic_name'].tolist()
 
-        return render_template("user_films.html", user_favs=output)
+        num_critics = int(len(output))
+
+        scores = critic_matches[1]
+        #increment this in a new column
+        return render_template("user_films.html", user_favs=output, scores=scores, length=num_critics)
    
     else:
 
-        movies = pd.read_sql('SELECT title FROM films', titles)
+        movies = pd.read_sql('SELECT * FROM films', titles)
+
+        ranking_filmIDS = pd.read_sql('SELECT film_id FROM rankings', titles)
+
+        titles.close()
+
+        filmID_list = ranking_filmIDS['film_id'].unique().tolist()
+
+        goof =  movies['id'].isin(filmID_list)
+
+        movies = movies[goof]
 
         film_list = movies['title'].unique().tolist()
 
-        titles.close()
+        print(len(film_list))
 
         return render_template("home.html", film_list=film_list)
 
