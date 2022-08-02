@@ -16,7 +16,7 @@ def find_user_id():
     #in reference to converted sql to pd db, the user id is appended to the end. Therefore, look at the last id index. 
     return(user_id)
 
-
+# I THINK THIS IS WHERE I SHOULD IMPLEMENT ZERO SKIP. 
 def add_user(user_dict, user_id):
     #this creates user ranking db and appends it to the end of general critic database. 
     conn = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/databases/TopTen.db')

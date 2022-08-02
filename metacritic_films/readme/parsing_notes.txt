@@ -57,6 +57,7 @@ only return films that are ranked 1-10, I could look to return <li> tags
 with attribute values of "value = 1-10". 
 ** For future implementation: link movie ranks with the <li> value attribute. This also enables
 searching straight from the html file, although searching can also be done once data is parced to
+<<<<<<< HEAD
 csv file
 
 
@@ -78,3 +79,6 @@ HTML manual prep before parsing:
 6. Delete <div class="module stories_module"> ... </div> 
 7. Delete <div class="module recent_comments"> ... </div>
 8. Delete <div id="mastfoot"> ... </div>
+=======
+csv file
+>>>>>>> cfc2b1d90fd0f7e2c803d7fc3111666fd52e22a6
