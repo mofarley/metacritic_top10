@@ -41,6 +41,11 @@ def add_user(user_dict, user_id):
     for a in user_Title_list:
         title_to_id = titles[titles['title'] == a]
         user_ID_list.append(int(title_to_id['id']))
+    print(user_ID_list)
+    print('\n')
+    print(user_Title_list)
+    #print(user_Title_list)
+    #print('\n titles database --> return a list of corresponding film_id')
 
     user_isin_films = titles["title"].isin(user_Title_list)
     #isin returns T/F for values passed to it --> if a row has passed value (i.e its in user_dict), it returns true. 
@@ -48,6 +53,8 @@ def add_user(user_dict, user_id):
     
     user_films = titles[user_isin_films]
     #runs T/F output against titles database and returns dataframe of (only) items that are True. 
+
+    #print(user_films)
 
     rankings_temp = rankings['film_id'].isin(user_Title_list)
 
@@ -66,7 +73,6 @@ def add_user(user_dict, user_id):
 
     rankings_matrix = rankings_matrix.fillna(0)
 
-    
     #print(rankings_matrix.loc[67:100, 605])
     #                         row     column
 
@@ -74,6 +80,7 @@ def add_user(user_dict, user_id):
 
     matrix_final = rankings_matrix.loc[user_ID_list, :]
 
+    #rankings_matrix[film_id].isin(user_Title_list)
 
     #appends user ranking to the end of general critic rankings'''
     return matrix_final
@@ -100,7 +107,7 @@ def cosine_similarity(user_id, rankings_pd, k=5):
         #cosine similarity calc for each critic
         if i == user_id:
             continue
-        #skip user cosine similarity calc
+            #skip user cosine similarity calc
         critic = torch.tensor(rankings_pd[i].values)
         #see tensor image in readme section
         output = cos0(user, critic)
@@ -115,5 +122,3 @@ def cosine_similarity(user_id, rankings_pd, k=5):
     output_list = [output_ids, output_scores]
     
     return output_list
-
-    

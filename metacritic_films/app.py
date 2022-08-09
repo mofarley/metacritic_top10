@@ -3,7 +3,6 @@ import sqlite3
 from sqlite3 import connect
 from flask import Flask, flash, redirect, render_template, request
 import pandas as pd
-import torch
 from helpers import add_user, cosine_similarity, find_user_id
 
 # Configure application
@@ -76,8 +75,8 @@ def home():
         return render_template("home.html", film_list=film_list)
 
         #TO DO
-        # 1. write descriptions for helper functions  DONE
-        # 2. user_films.html: show cosine scores next to critic names. --> down the road graphic display of calculation?
+        # 1.DONE write descriptions for helper functions 
+        # 2.DONE user_films.html: show cosine scores next to critic names. DONE --> down the road graphic display of calculation? 
         # 3. user_films.html: provide links on critic names to list of their favorite films
         # 4. think about changing input layout on home.html... make ranking of favorite films an option?
         # 5. Grindy but... add top 10's for 2011 to 2014
