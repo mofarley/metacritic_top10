@@ -20,7 +20,7 @@ Jesse Hassenger,La La Land,American Honey,Green Room,Arrival,Manchester by the S
 Noel Murray,Manchester by the Sea,The Handmaiden,La La Land,Moonlight,Green Room,Jackie,The Eyes of My Mother,Paterson,The Fits,Hell or High Water
 Katie Rife,Moonlight,The Handmaiden,Arrival,Green Room,The Lobster,Silence,American Honey,Elle,Manchester by the Sea,Hell or High Water
 Ignatiy Vishnevetsky,Elle,The Lobster,Midnight Special,Hell or High Water,Moonlight,Sully,Toni Erdmann,La La Land,Silence,Three
-Staff,Moonlight,The Fits,Lemonade,Cemetery of Splendour,13th,The Nice Guys,The Witch,Arrival,Do Not Resist,Green Room
+Baltimore City Paper,Moonlight,The Fits,Lemonade,Cemetery of Splendour,13th,The Nice Guys,The Witch,Arrival,Do Not Resist,Green Room
 Nicholas Barber,La La Land,Anomalisa,Manchester by the Sea,Nocturnal Animals,Arrival,Toni Erdmann,The Founder,The Distinguished Citizen,Florence Foster Jenkins,Your Name
 Siddhant Adlakha,Moonlight,The Fits,Manchester by the Sea,Toni Erdmann,The Salesman,Pete's Dragon,Lion,White Girl,Bad Black,Morris From America
 Meredith Borders,The Edge of Seventeen,Moonlight,Hunt for the Wilderpeople,The Handmaiden,The Love Witch,The Invitation,La La Land,Green Room,"Hail, Caesar!",Sing Street
@@ -30,7 +30,7 @@ Kaitlyn Booth,Moonlight,Kubo and the Two Strings,Loving,Captain America: Civil W
 Ty Burr,Moonlight,Paterson,Manchester by the Sea,O.J.: Made in America,Jackie,The Fits,La La Land,The Handmaiden,I Am Not Your Negro,Cameraperson
 Stephen Schaefer,Manchester by the Sea,Florence Foster Jenkins,Fire at Sea,Patriots Day,Hacksaw Ridge,Hidden Figures,Toni Erdmann,Jackie,Hell or High Water,Moonlight
 Alison Willmore,Toni Erdmann,Moonlight,Weiner,Mountains May Depart,Hell or High Water,Elle,Things to Come,O.J.: Made in America,The Edge of Seventeen,Manchester by the Sea
-Staff,Toni Erdmann,Elle,The Neon Demon,Aquarius,Slack Bay,Julieta,Staying Vertical,La Loi de la jungle,Carol,Le bois dont les rêves sont faits
+Cahiers du cinéma,Toni Erdmann,Elle,The Neon Demon,Aquarius,Slack Bay,Julieta,Staying Vertical,La Loi de la jungle,Carol,Le bois dont les rêves sont faits
 Eli Glasner,La La Land,Moonlight,Arrival,Anatomy of Violence,Sing Street,Cameraperson,Manchester by the Sea,Midnight Special,Deadpool,Demolition
 J.R. Jones,Embrace of the Serpent,Manchester by the Sea,Don't Think Twice,The Witness,London Road,The Club,Son of Saul,Microbe and Gasoline,Tower,Weiner
 Leah Pickett,American Honey,Moonlight,Arrival,La La Land,The Handmaiden,O.J.: Made in America,The Witch,13th,The Lobster,Manchester by the Sea
@@ -48,7 +48,7 @@ Brian Formo,Elle,Toni Erdmann,Sunset Song,Silence,The Witch,Moonlight,Arrival,Em
 Haleigh Foutch,American Honey,La La Land,Elle,20th Century Women,The Handmaiden,Hunt for the Wilderpeople,Green Room,The Invitation,The Witch,Paterson
 Matt Goldberg,Moonlight,La La Land,13th,Manchester by the Sea,The Witch,Hell or High Water,The Nice Guys,Popstar: Never Stop Never Stopping,Arrival,"Hail, Caesar!"
 Aubrey Page,Moonlight,La La Land,Elle,The Witch,Toni Erdmann,The Invitation,Certain Women,Silence,No Home Movie,Manchester by the Sea
-Staff,Moonlight,Green Room,Manchester by the Sea,The Handmaiden,La La Land,Arrival,Krisha,Sing Street,Elle,O.J.: Made in America
+Consequence of Sound,Moonlight,Green Room,Manchester by the Sea,The Handmaiden,La La Land,Arrival,Krisha,Sing Street,Elle,O.J.: Made in America
 William Bibbiani,Moonlight,The Handmaiden,Christine,Silence,A Monster Calls,Manchester by the Sea,The Invitation,Paterson,Hunt for the Wilderpeople,Southside With You
 Witney Seibold,Arrival,Moonlight,The Handmaiden,The Edge of Seventeen,Love & Friendship,American Honey,The Lobster,Silence,The Invitation,The Witch
 Joshua Brunsting,Neon Bull,The Fits,Moonlight,Paterson,The Other Side,Cameraperson,"Right Now, Wrong Then",Neither Heaven Nor Earth,Certain Women,I Am Not Your Negro
@@ -57,8 +57,8 @@ Pete Hammond,La La Land,Eye in the Sky,Hell or High Water,Hacksaw Ridge,Paterson
 David Crow,La La Land,Jackie,The Witch,Nocturnal Animals,Arrival,Moonlight,The Nice Guys,Love & Friendship,The Edge of Seventeen,Hacksaw Ridge
 Don Kaye,Hell or High Water,Manchester by the Sea,Moonlight,Arrival,Hunt for the Wilderpeople,Captain America: Civil War,"I, Daniel Blake",The Witch,Weiner,Patriots Day
 Adam Graham,La La Land,The Edge of Seventeen,Moonlight,Krisha,The Neon Demon,Everybody Wants Some!!,The Nice Guys,The Jungle Book,Jackie,Don't Breathe
-Staff,Hunt for the Wilderpeople,Arrival,Hell or High Water,Captain America: Civil War,Victoria,The Hateful Eight,Kubo and the Two Strings,The Revenant,Spotlight,Green Room
-Staff,La La Land,Moonlight,Manchester by the Sea,The Lobster,Hell or High Water,The Handmaiden,Midnight Special,Weiner,Sing Street,Captain America: Civil War
+Empire,Hunt for the Wilderpeople,Arrival,Hell or High Water,Captain America: Civil War,Victoria,The Hateful Eight,Kubo and the Two Strings,The Revenant,Spotlight,Green Room
+Entertainment Weekly,La La Land,Moonlight,Manchester by the Sea,The Lobster,Hell or High Water,The Handmaiden,Midnight Special,Weiner,Sing Street,Captain America: Civil War
 Nick Schager,O.J.: Made in America,The Lobster,Green Room,Gleason,Hell or High Water,Elle,Arrival,The Fits,Jackie,Moonlight
 Kevin Lally,La La Land,Hell or High Water,Manchester by the Sea,20th Century Women,Paterson,Jackie,"I, Daniel Blake",13th,I Am Not Your Negro,Zootopia,Little Men
 Rob Hunter,Moonlight,The Handmaiden,Arrival,Green Room,Manchester by the Sea,The Lobster,The Fits,Paterson,Swiss Army Man,Toni Erdmann
@@ -82,7 +82,7 @@ David Hudson,Toni Erdmann,Paterson,Certain Women,A Quiet Passion,Things to Come,
 Bilge Ebiri,The Fits,Manchester by the Sea,The Handmaiden,Cameraperson,Silence,Fire at Sea,Moonlight,Paterson,Tower,Hell or High Water
 Josh Bell,Hell or High Water,Green Room,Our Little Sister,Kubo and the Two Strings,20th Century Women,Love & Friendship,The Edge of Seventeen,The Nice Guys,Everybody Wants Some!!,The Handmaiden
 L. Kent Wolgamott,Hell or High Water,Embrace of the Serpent,Hunt for the Wilderpeople,La La Land,Moonlight,"Hail, Caesar!",The Fits,Arrival,Miles Ahead,Deadpool
-Staff,Everybody Wants Some!!,Julieta,Embrace of the Serpent,Paterson,Knight of Cups,Love & Friendship,Sully,Arabian Nights,Midnight Special,Heaven Knows What
+Little White Lies,Everybody Wants Some!!,Julieta,Embrace of the Serpent,Paterson,Knight of Cups,Love & Friendship,Sully,Arabian Nights,Midnight Special,Heaven Knows What
 Justin Chang,Silence,Moonlight,Toni Erdmann,O.J.: Made in America,Everybody Wants Some!!,My Golden Days,Paterson,I Am Not Your Negro,Manchester by the Sea,Certain Women
 Mark Olsen,Moonlight,The Lobster,Silence,Certain Women,Things to Come,Manchester by the Sea,Elle,Christine,O.J.: Made in America,20th Century Women
 Kenneth Turan,Manchester by the Sea,Moonlight,13th,I Am Not Your Negro,O.J.: Made in America,Loving,Midnight Special,Jackie,Neruda,Arrival,"Hail, Caesar!",The Eagle Huntress,Hunt for the Wilderpeople,The Red Turtle,A War,My Golden Days
@@ -92,10 +92,10 @@ Matt Prigge,Toni Erdmann,Manchester by the Sea,Everybody Wants Some!!,Elle,Pater
 Connie Ogle,Moonlight,Manchester by the Sea,20th Century Women,Train to Busan,Love & Friendship,The Handmaiden,Kubo and the Two Strings,Sing Street,Fences,Hell or High Water
 Rene Rodriguez,Silence,La La Land,Moonlight,Manchester by the Sea,Everybody Wants Some!!,Paterson,The Lobster,The Neon Demon,A Bigger Splash,Knight of Cups
 Dewey Singleton,Moonlight,La La Land,Manchester by the Sea,Arrival,Fences,Hell or High Water,The Edge of Seventeen,Captain Fantastic,10 Cloverfield Lane,Nocturnal Animals
-Staff,Paterson,Cameraperson,Manchester by the Sea,Moonlight,Certain Women,Elle,Toni Erdmann,O.J.: Made in America,The Handmaiden,Happy Hour
+Movie Mezzanine,Paterson,Cameraperson,Manchester by the Sea,Moonlight,Certain Women,Elle,Toni Erdmann,O.J.: Made in America,The Handmaiden,Happy Hour
 Roger Moore,Loving,Hell or High Water,Kubo and the Two Strings,Manchester by the Sea,Arrival,Moana,Moonlight,Lion,Doctor Strange,Anthropoid
 Amy Nicholson,The Lobster,O.J.: Made in America,The Handmaiden,Barry,Sausage Party,Divines,Tickled,Moonlight,A Bigger Splash,Swiss Army Man
-Staff,La La Land,Moonlight,Manchester by the Sea,Nocturnal Animals,Deadpool,Jackie,Weiner,The Witch,The Edge of Seventeen,Arrival
+Nerdist,La La Land,Moonlight,Manchester by the Sea,Nocturnal Animals,Deadpool,Jackie,Weiner,The Witch,The Edge of Seventeen,Arrival
 Mike Scott,La La Land,Moonlight,Gleason,Manchester by the Sea,Jackie,Captain Fantastic,Arrival,Deadpool,Zootopia,Hell or High Water
 Will Leitch,O.J.: Made in America,Moonlight,Manchester by the Sea,La La Land,Paterson,Everybody Wants Some!!,The Lobster,Jackie,Midnight Special,Louder Than Bombs
 Rex Reed,Manchester by the Sea,Hell or High Water,Hacksaw Ridge,The Light Between Oceans,Lion,Fences,Captain Fantastic,Jackie,Denial,La La Land
@@ -117,7 +117,7 @@ Sheila Benson,Moonlight,Paterson,Toni Erdmann,Manchester by the Sea,"I, Daniel B
 David Coursen,Manchester by the Sea,Mountains May Depart,No Home Movie,Moonlight,The President,Sieranevada,Behemoth,Little Men,Remember,Sully
 John Hartl,Moonlight,Manchester by the Sea,Indignation,13th,Captain Fantastic,The Lobster,Hell or High Water,A Man Called Ove,The Innocents,La La Land
 Jay Kuehner,Toni Erdmann,Cemetery of Splendor,Aquarius,Kate Plays Christine,Neon Bull,Happy Hour,"Right Now, Wrong Then",Homeland: Iraq Year Zero,Certain Women,Moonlight
-Staff,Moonlight,American Honey,The Other Side,La La Land,Manchester by the Sea,Loving,One More Time With Feeling,Paterson,Certain Women,The Lobster
+Paste,Moonlight,American Honey,The Other Side,La La Land,Manchester by the Sea,Loving,One More Time With Feeling,Paterson,Certain Women,The Lobster
 Tom Gliatto,Sully,Doctor Strange,Arrival,La La Land,Moana,Jackie,Hacksaw Ridge,Love & Friendship,Manchester by the Sea,Moonlight
 Jessica Kiang,Moonlight,Things to Come,O.J.: Made in America,Arrival,Jackie,One More Time With Feeling,Toni Erdmann,Sieranevada,The Age of Shadows,Neruda
 Oktay Ege Kozak,Arrival,Moonlight,Pete's Dragon,Midnight Special,The Lobster,Jackie,I Am Not Your Negro,Tower,Glassland,The Witch
@@ -129,7 +129,7 @@ Gregory Ellwood,Moonlight,Toni Erdmann,Jackie,Hell or High Water,Elle,Personal S
 Ryan Roschke,Deadpool,La La Land,Moonlight,Lion,Nocturnal Animals,Jackie,A Monster Calls,Captain America: Civil War,Sing Street,Manchester by the Sea
 Lauren Chval,La La Land,Moonlight,Everybody Wants Some!!,Manchester by the Sea,The Edge of Seventeen,Sing Street,Don't Think Twice,Arrival,Fences,The Nice Guys
 James Berardinelli,Arrival,La La Land,The Handmaiden,Eye in the Sky,Manchester by the Sea,Deadpool,The Edge of Seventeen,Fences,Moonlight,A Monster Calls
-Staff,No Home Movie,Toni Erdmann,Cemetery of Splendor,Cameraperson,Aquarius,Moonlight,"Right Now, Wrong Then",Sunset Song,Silence,Certain Women,Knight of Cups,The Illinois Parables
+Reverse Shot,No Home Movie,Toni Erdmann,Cemetery of Splendor,Cameraperson,Aquarius,Moonlight,"Right Now, Wrong Then",Sunset Song,Silence,Certain Women,Knight of Cups,The Illinois Parables
 K. Austin Collins,Moonlight,O.J.: Made in America,Sully,Cemetery of Splendor,Silence,Love & Friendship,Manchester by the Sea,The Love Witch,Everybody Wants Some!!,Cameraperson
 Simon Abrams,April and the Extraordinary World,Elle,The Love Witch,Love & Friendship,Evolution,Cosmos,Louder Than Bombs,"Hail, Caesar!",My Golden Days,Embrace of the Serpent
 Nick Allen,Manchester by the Sea,Cameraperson,Pervert Park,Masterminds,Blood on the Mountain,Off the Rails,Moonlight,Southside With You,Sausage Party,Julieta
@@ -175,14 +175,14 @@ Mick LaSalle,Knight of Cups,Hacksaw Ridge,La La Land,Fences,Elle,Manchester by t
 Jeffrey M. Anderson,Cemetery of Splendor,Paterson,Arrival,Sully,Moonlight,Everybody Wants Some!!,Certain Women,Silence,O.J.: Made in America,Loving
 Anita Katz,I Am Not Your Negro,The Salesman,Toni Erdmann,Jackie,Moonlight,13th,The Club,O.J.: Made in America,Manchester by the Sea,Don't Think Twice
 Randy Myers,Moonlight,Embrace of the Serpent,Manchester by the Sea,La La Land,Sing Street,The Handmaiden,Hell or High Water,The Witch,Arrival,Kubo and the Two Strings
-Staff,Toni Erdmann,Elle,The Wailing,Moonlight,Arrival,The Handmaiden,American Honey,O.J.: Made in America,The Nice Guys,The Neon Demon
+ScreenAnarchy,Toni Erdmann,Elle,The Wailing,Moonlight,Arrival,The Handmaiden,American Honey,O.J.: Made in America,The Nice Guys,The Neon Demon
 Matt Singer,O.J.: Made in America,Toni Erdmann,Manchester by the Sea,Moonlight,Sing Street,La La Land,Krisha,The Handmaiden,Demon,"Hail, Caesar!"
 Erin Whitney,Moonlight,The Lobster,Jackie,Krisha,The Handmaiden,Manchester by the Sea,Cameraperson,Elle,La La Land,20th Century Women
 Robert Horton,Aquarius,Our Little Sister,The Fits,Cemetery of Splendour,Things to Come,Everybody Wants Some!!,Sully,Paterson,Green Room,Aferim!
 Sherilyn Connelly,Lemonade,The Neon Demon,The Incident,Ghostbusters,Tikkun,April and the Extraordinary World,Approaching the Unknown,The Fits,Eisenstein in Guanajuato,The Witness
 Roger Friedman,Manchester by the Sea,Silence,La La Land,Lion,Hell or High Water,Fences,20th Century Women,Moonlight,Florence Foster Jenkins,Sully
 Bruce R. Miller,La La Land,Moonlight,Manchester by the Sea,Captain Fantastic,The Lobster,Jackie,Arrival,Hell or High Water,Deadpool,Kubo and the Two Strings
-Staff,Toni Erdmann,O.J.: Made in America,Happy Hour,Cemetery of Splendor,Elle,Paterson,Moonlight,Cameraperson,Manchester by the Sea,The Treasure
+Slant,Toni Erdmann,O.J.: Made in America,Happy Hour,Cemetery of Splendor,Elle,Paterson,Moonlight,Cameraperson,Manchester by the Sea,The Treasure
 Ethan Anderton,La La Land,Moonlight,Sing Street,Hunt for the Wilderpeople,Arrival,Don't Think Twice,Popstar: Never Stop Never Stopping,The Edge of Seventeen,Indignation,"Life, Animated"
 David Chen,The Handmaiden,O.J.: Made in America,Moonlight,Tickled,Weiner,Swiss Army Man,Tower,Green Room,Moana,Christine
 Jack Giroux,20th Century Women,The Lobster,Arrival,La La Land,Manchester by the Sea,Little Sister,Everybody Wants Some!!,The Invitation,Jackie,Hell or High Water
@@ -199,7 +199,7 @@ Joshua Rothkopf,Manchester by the Sea,Silence,La La Land,Everybody Wants Some!!,
 Peter Howell,Moonlight,La La Land,Manchester by the Sea,Arrival,Jackie,Toni Erdmann,Paterson,Hell or High Water,Operation Avalanche,Love & Friendship
 Total Film/GamesRadar+,Rogue One: A Star Wars Story,Deadpool,10 Cloverfield Lane,Captain America: Civil War,Arrival,Assassin's Creed,Kubo and the Two Strings,The Witch,Doctor Strange,Star Trek Beyond
 Michael Smith,La La Land,Jackie,Moonlight,Deadpool,Hell or High Water,Love & Friendship,Zootopia,The Accountant,The Nice Guys,Equity
-Staff,Nocturnal Animals,The Revenant,Son of Saul,The Big Short,Spotlight,A Bigger Splash,Paterson,"I, Daniel Blake",Julieta,Mustang
+Uncut,Nocturnal Animals,The Revenant,Son of Saul,The Big Short,Spotlight,A Bigger Splash,Paterson,"I, Daniel Blake",Julieta,Mustang
 Vince Mancini,La La Land,Zootopia,Toni Erdmann,Don't Think Twice,American Honey,Hunt for the Wilderpeople,Weiner,I Am Not Your Negro,Moonlight,Green Room
 Keith Phipps,Moonlight,Paterson,Manchester by the Sea,Jackie,Arrival,La La Land,Silence,Toni Erdmann,Little Men,Certain Women
 Mike Ryan,O.J.: Made in America,La La Land,Moonlight,20th Century Women,Everybody Wants Some!!,Sing Street,Popstar: Never Stop Never Stopping,Captain America: Civil War,Hidden Figures,Rogue One: A Star Wars Story
@@ -214,8 +214,8 @@ Alissa Wilkinson,Moonlight,Cameraperson,O.J.: Made in America,Toni Erdmann,Pater
 David Edelstein,La La Land,Hell or High Water,20th Century Women,Krisha,O.J.: Made in America,Moonlight,The Witness,The Handmaiden,Tower,Zero Days
 Tricia Olszewski,O.J.: Made in America,Cameraperson,13th,Deadpool,Weiner,La La Land,The Beatles: Eight Days a Week — The Touring Years,Krisha,Newtown,Hell or High Water
 Ann Hornaday,Moonlight,Manchester by the Sea,Hell or High Water,The Confirmation,O.J.: Made in America,Cameraperson,La La Land,Lemonade,13th,Southside With You
-Staff,Arrival,Manchester by the Sea,Captain America: Civil War,Zootopia,Hacksaw Ridge,Rogue One: A Star Wars Story,10 Cloverfield Lane,Deadpool,La La Land,Nocturnal Animals
+We Got This Covered,Arrival,Manchester by the Sea,Captain America: Civil War,Zootopia,Hacksaw Ridge,Rogue One: A Star Wars Story,10 Cloverfield Lane,Deadpool,La La Land,Nocturnal Animals
 Rod Pocowatchit,La La Land,Arrival,Hacksaw Ridge,Rogue One: A Star Wars Story,Hell or High Water,Fences,Manchester by the Sea,Moonlight,Deadpool,Gleason
-Staff,Moonlight,American Honey,20th Century Women,La La Land,The Invitation,Green Room,13th,Arrival,Rogue One: A Star Wars Story,Jackie
+Wired,Moonlight,American Honey,20th Century Women,La La Land,The Invitation,Green Room,13th,Arrival,Rogue One: A Star Wars Story,Jackie
 Alonso Duralde,Moonlight,Take Me to the River,La La Land,The Lobster,Love & Friendship,The Handmaiden,Julieta,Certain Women,Things to Come,Queen of Katwe
-Staff,Moonlight,Manchester by the Sea,La La Land,Hell or High Water,Zootopia,Arrival,O.J.: Made in America,Deadpool,Weiner,Moana
+Yahoo! Movies,Moonlight,Manchester by the Sea,La La Land,Hell or High Water,Zootopia,Arrival,O.J.: Made in America,Deadpool,Weiner,Moana

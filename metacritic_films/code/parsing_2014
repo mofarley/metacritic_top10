@@ -41,7 +41,7 @@ for table in tables:
                 temp_row.insert(0, critic_name)
             count += 1
         if len(temp_row) > 9:
-            critic = temp_row[0].replace("View full list", "").strip('\n').strip()
+            critic = temp_row[0].replace("View article", "").strip('\n').strip()
             if critic == 'Staff consensus':
                 temp_row[0] = publisher_name.strip()
             elif critic == 'Staff':

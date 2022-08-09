@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import csv
-with open("/Users/mosesfarley/metacritic_top10/metacritic_films/sources/Film Critic Top 10 Lists - Best Movies of 2014 - Metacritic.html", "r") as f:
+from critic_list import list_critics
+with open("/Users/mosesfarley/metacritic_top10/metacritic_films/sources/Film Critic Top 10 Lists - Best of 2011 - Metacritic.html", "r") as f:
     topten = BeautifulSoup(f, "html.parser")
 
 tables = topten.find_all("table")
@@ -10,48 +11,68 @@ output_rows = []
 for table in tables:
     critics_and_films = table.find_all("tr") 
     #critics_and_films --> see line 14 on parsing_notes.txt
-    count = 0
-    critics_and_films_total = len(critics_and_films)
+    num_rows = len(critics_and_films)
+    print(num_rows)
+    critics_and_films_total = int(num_rows / 2) 
     #critics_and_films_total = # of <tr>'s in a given table or tablebody tag
-    publisher_name = table.find('caption').text
-    while count < critics_and_films_total:
-        temp_row = []
-        #use count as an index value for critics and films that fall under <tr>'s
+    #publisher_name = table.find('caption').text
+    temp_row = []
+    count = 0
+    #use count as an index value for critic_index and films that fall under <tr>'s
+    while count < num_rows:
         for i in range(2):
             flag = False
-            if count % 2 != 0: #if count is odd or represents the film list rather than critic name.
-                film_list = critics_and_films[count].find_all('li')
+            if i == 1:
+                try:
+                    film_list = critics_and_films[count].find_all('li')
+                except IndexError:
+                    count += 1
+                    continue
                 for flic in film_list:
                     try:
-                        x = int(flic['value'])
-                        if x in range(11):
-                            temp_row.append(flic.text)
+                        if '(tie)' in flic.text:
+                            no_tie = flic.text
+                            no_tie = no_tie.replace('(tie)','').strip()
+                            temp_row.append(no_tie)
                         else:
-                            flag = True
-                            continue
+                            temp_row.append(flic.text)                    
                     except (KeyError, ValueError) as e:
                         #exception looking for film list not existing or no 'value' attribute
                         flag = True
                         continue
+                count += 1
             else:
                 critic_name = critics_and_films[count].text
+                count += 1
             # print('{}  {}'.format(count, critics_and_films[count]))
             # add unformated critic and their films to temp row (output_row)
             if i == 1 and flag == False:
                 temp_row.insert(0, critic_name)
-            count += 1
         if len(temp_row) > 9:
             critic = temp_row[0].replace("View full list", "").strip('\n').strip()
+            critic = critic.replace("View article", "").strip()
+            #critic_list = list_critics()
+            #for critic_name in critic_list:
+                #if critic_name in critic:
+                    #critic = critic_name
             if critic == 'Staff consensus':
-                temp_row[0] = publisher_name.strip()
-            elif critic == 'Staff':
-                temp_row[0] = publisher_name.strip()
+                temp_row[0] = 'fix later'
             else:
                 temp_row[0] = critic
             output_rows.append(temp_row)
+            temp_row = []
+
+critic_list = list_critics()
+
+for x in output_rows:
+    for critic_name in critic_list:
+        if critic_name in x[0]:
+            x[0] = critic_name
+        elif 'Staff consensus' in x[0]:
+            x[0] = x[0].replace('Staff consensus', '').strip()
 
 
-csv_file = "2014.csv"
+csv_file = "2011.csv"
 csv_columns = ["Critic/Publisher", "First", 'Second', 'Third', 'Fourth', 'Fifth',
 'Sixth', 'Seventh', 'Eigth', 'Ninth', 'Tenth']
 
