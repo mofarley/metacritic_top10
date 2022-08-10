@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import csv
-with open("/Users/mosesfarley/metacritic_top10/metacritic_films/sources/Film Critic Top 10 Lists - Best Movies of 2014 - Metacritic.html", "r") as f:
+with open("/home/moses/Desktop/metacritic_top10/metacritic_films/sources/Film Critic Top 10 Lists - Best Movies of 2019 - Metacritic.html", "r") as f:
     topten = BeautifulSoup(f, "html.parser")
 
 tables = topten.find_all("table")
@@ -21,11 +21,23 @@ for table in tables:
             flag = False
             if count % 2 != 0: #if count is odd or represents the film list rather than critic name.
                 film_list = critics_and_films[count].find_all('li')
+                tie_critic = False
                 for flic in film_list:
                     try:
                         x = int(flic['value'])
-                        if x in range(11):
-                            temp_row.append(flic.text)
+                        if x in range(11):                            
+                            if '(tie)' in flic.text:
+                                tie_critic = True
+                                no_tie = flic.text
+                                no_tie = no_tie.replace('(tie)','').strip()
+                                tie_split = no_tie.split('-AND-')
+                                for tied_movie in tie_split:
+                                    tied_movie.strip()
+                                    temp_row.append(tied_movie.strip())
+
+
+                            else:
+                                temp_row.append(flic.text)
                         else:
                             flag = True
                             continue
@@ -51,7 +63,7 @@ for table in tables:
             output_rows.append(temp_row)
 
 
-csv_file = "2014.csv"
+csv_file = "2019t.csv"
 csv_columns = ["Critic/Publisher", "First", 'Second', 'Third', 'Fourth', 'Fifth',
 'Sixth', 'Seventh', 'Eigth', 'Ninth', 'Tenth']
 
