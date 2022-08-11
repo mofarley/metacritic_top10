@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import csv
-with open("/home/moses/Desktop/metacritic_top10/metacritic_films/sources/Film Critic Top 10 Lists - Best Movies of 2019 - Metacritic.html", "r") as f:
+with open("/home/moses/Desktop/metacritic_top10/metacritic_films/sources/Film Critic Top 10 Lists - Best Movies of 2017 - Metacritic.html", "r") as f:
     topten = BeautifulSoup(f, "html.parser")
 
 tables = topten.find_all("table")
@@ -30,12 +30,10 @@ for table in tables:
                                 tie_critic = True
                                 no_tie = flic.text
                                 no_tie = no_tie.replace('(tie)','').strip()
-                                tie_split = no_tie.split('-AND-')
+                                tie_split = no_tie.split(' AND ')
                                 for tied_movie in tie_split:
                                     tied_movie.strip()
                                     temp_row.append(tied_movie.strip())
-
-
                             else:
                                 temp_row.append(flic.text)
                         else:
@@ -63,7 +61,7 @@ for table in tables:
             output_rows.append(temp_row)
 
 
-csv_file = "2019t.csv"
+csv_file = "2017.csv"
 csv_columns = ["Critic/Publisher", "First", 'Second', 'Third', 'Fourth', 'Fifth',
 'Sixth', 'Seventh', 'Eigth', 'Ninth', 'Tenth']
 
