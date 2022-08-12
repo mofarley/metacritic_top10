@@ -6,7 +6,7 @@ import torch
 
 def find_user_id():
 
-    conn = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/databases/TopTen.db')
+    conn = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/TopTen.db')
     
     critics = pd.read_sql('SELECT id FROM critics', conn)
     #sql to panda
@@ -19,7 +19,7 @@ def find_user_id():
 # I THINK THIS IS WHERE I SHOULD IMPLEMENT ZERO SKIP. 
 def add_user(user_dict, user_id):
     #this creates user ranking db and appends it to the end of general critic database. 
-    conn = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/databases/TopTen.db')
+    conn = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/TopTen.db')
 
     rankings = pd.read_sql('SELECT * FROM rankings', conn)
 
@@ -116,4 +116,12 @@ def cosine_similarity(user_id, rankings_pd, k=5):
     
     return output_list
 
-    
+def critic_favorites(critic_matches): #critic_matches == output_list from cosine_similarity
+    list_critic_favs = []
+    conn = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/TopTen.db')
+    for critic in critic_matches[0]:
+        critic_favs_db = pd.read_sql('SELECT title FROM films WHERE id IN (SELECT film_id FROM rankings WHERE critic_id == {critic});'.format(critic = critic), conn)
+        critic_favs = critic_favs_db['title'].tolist()
+        list_critic_favs.append(critic_favs)
+    conn.close()
+    return(list_critic_favs)

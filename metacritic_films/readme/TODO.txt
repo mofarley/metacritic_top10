@@ -1,4 +1,5 @@
 1. user_films.html: provide links on critic names to list of their favorite films --> like to TopTen.db films and to rottentomatoes bio
+Implement collapse bootstrap feature to display critic films
 2. get it running via website
 3. think about changing input layout on home.html... make ranking of favorite films an option?
 ROUGH IDEAS

@@ -3,7 +3,7 @@ import sqlite3
 from sqlite3 import connect
 from flask import Flask, flash, redirect, render_template, request
 import pandas as pd
-from helpers import add_user, cosine_similarity, find_user_id
+from helpers import add_user, cosine_similarity, find_user_id, critic_favorites
 
 # Configure application
 app = Flask(__name__)
@@ -18,7 +18,7 @@ def apology(code=400):
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    titles = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/databases/TopTen.db')
+    titles = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/TopTen.db')
     if request.method == "POST":
         film1 = request.form.get("film_one")
         film2 = request.form.get("film_two")
@@ -44,15 +44,28 @@ def home():
         match_filter = critics['id'].isin(critic_matches[0])
         #basic description of how panda filtering works in helpers.py
         
-        output = critics[match_filter]
+        critic_match_list = critics[match_filter]
 
-        output = output['critic_name'].tolist()
+        critic_match_list = critic_match_list['critic_name'].tolist()
 
-        num_critics = int(len(output))
+        rt_search_list = []
+
+        for name in critic_match_list:
+            search_name = name.replace(' ', '-').strip()
+            #TO DO: if publisher render a different search 
+            rt_search = 'https://www.rottentomatoes.com/critics/{search_name}/movies'.format(search_name = search_name)
+            rt_search_list.append(rt_search)
+
+
+        num_critics = int(len(critic_match_list))
 
         scores = critic_matches[1]
         #increment this in a new column
-        return render_template("user_films.html", user_favs=output, scores=scores, length=num_critics)
+
+        critic_favorites_list = critic_favorites(critic_matches)
+        #To Do: use collapse bootstramp feature to display critic film lists 
+        return render_template("user_films.html", user_favs=critic_match_list, scores=scores, length=num_critics, 
+        rt_search = rt_search_list, critic_movies = critic_favorites_list)
    
     else:
 

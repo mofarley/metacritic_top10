@@ -1,11 +1,11 @@
 import pandas as pd
 from sqlite3 import connect
 import torch
-from helpers_v2 import add_user, cosine_similarity, find_user_id
+from helpers_v3 import add_user, cosine_similarity, find_user_id, critic_favorites
 
 def user_test():
 
-    conn = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/databases/TopTen.db')
+    conn = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/TopTen.db')
 
     titles = pd.read_sql('SELECT * FROM films', conn)
 
@@ -17,7 +17,7 @@ def user_test():
 
     temp_dict = {}
 
-    ran = torch.randint(1, 2045, (10,))
+    ran = torch.randint(1, 2600, (10,))
 
     rand_list = []
 
@@ -39,7 +39,9 @@ peter_travers = {1: 'Dune', 2: 'Dunkirk', 3: 'If Beale Street Could Talk', 4: 'T
 5: 'Fences', 6: 'Minari', 7: 'Sully', 8: 'Belfast', 9: 'Lady Bird', 10: 'Carol'}
 user_id = find_user_id()
 random_user = user_test()
-rankings = add_user(peter_travers, user_id)
+rankings = add_user(random_user, user_id)
 critic_matches = cosine_similarity(user_id, rankings)
-print(critic_matches)
+critic_movie_list = critic_favorites(critic_matches)
+print(critic_movie_list)
+print(len(critic_movie_list))
 # skip zero values 

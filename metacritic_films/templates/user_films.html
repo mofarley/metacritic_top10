@@ -5,17 +5,18 @@
 {% endblock %}
 
 {% block main %}
-<h2>User Favorite 2015-2021</h2>
+<h2>User Favorite 2011-2021</h2>
 <table class="table">
     <thead>
         <tr>
             <th>Similar Critics</th>
-            <th>Cosine Similarity Score</th>
+            <th>Similarity Score</th>
+            <th>Critic top ten's</th>
         </tr>
     </thead>
     {% for i in range(length) %}
         <tr>
-            <td>{{ user_favs[i] }}</td>
+            <td><a href="{{ rt_search[i] }}">{{ user_favs[i] }}</a></td>
             <td>{{ scores[i] }}</td>
         </tr>
     {% endfor %}
