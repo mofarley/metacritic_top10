@@ -1,0 +1,6 @@
+1. user_films.html: provide links on critic names to list of their favorite films --> like to TopTen.db films and to rottentomatoes bio
+2. get it running via website
+3. think about changing input layout on home.html... make ranking of favorite films an option?
+ROUGH IDEAS
+3. import letterboxd lists
+5. Add film recs based on critic recs (see "collaborative filtering recommendation engine for Anime")
