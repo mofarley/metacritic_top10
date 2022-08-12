@@ -1,27 +1,28 @@
 import csv
 import sqlite3
+import pandas as pd
 rankings_list = []
 film_set = set()
 critic_set = set()
 film_rank = ['First','Second','Third','Fourth','Fifth','Sixth','Seventh','Eigth','Ninth','Tenth']
-for release_year in range(2015, 2022):
-  with open('/Users/mosesfarley/metacritic_top10/metacritic_films/databases/top_ten_csv/{year}.csv'.format(year = release_year), 'r') as f:
-      reader = csv.DictReader(f)
-      for row in reader:
-        critic_set.add((row['Critic/Publisher'],))
-  with open('/Users/mosesfarley/metacritic_top10/metacritic_films/databases/unique_films/{year}unique.csv'.format(year = release_year), 'r') as f:
-      reader = csv.reader(f)
-      for row in reader:
-          for value in row:
-              film_set.add((value,))
-with sqlite3.connect('/Users/mosesfarley/metacritic_top10/metacritic_films/TopTen.db') as c:
+for release_year in range(2011, 2022):
+  film_df = pd.read_csv('/home/moses/Desktop/metacritic_top10/metacritic_films/databases/top_ten_csv/{year}.csv'.format(year = release_year), on_bad_lines='skip')
+  critic_list = film_df.iloc[:, 0].tolist()
+  for critic in critic_list:
+    critic_set.add((critic,))
+  for i in range(1, 11):
+    film_list = film_df.iloc[:, i].unique().tolist()
+    for film in film_list:
+        film_set.add((film,))
+
+with sqlite3.connect('/home/moses/Desktop/metacritic_top10/metacritic_films/TopTen.db') as c:
   TopTen = c.cursor()
-  for film in film_set:
-    TopTen.execute('INSERT INTO films(title) VALUES (?);', film)
+  #executemany requires list items to be in tuple format (i guess for memory purposes) 
+  TopTen.executemany('INSERT INTO films(title) VALUES (?);', film_set)
   #for critic in critic_set:
   TopTen.executemany('INSERT INTO critics(critic_name) VALUES (?);', critic_set)
-  for release_year in range(2015, 2022):
-    with open('/Users/mosesfarley/metacritic_top10/metacritic_films/databases/top_ten_csv/{year}.csv'.format(year = release_year), 'r') as a:
+  for release_year in range(2011, 2022):
+    with open('/home/moses/Desktop/metacritic_top10/metacritic_films/databases/top_ten_csv/{year}.csv'.format(year = release_year), 'r') as a:
       reader1 = csv.DictReader(a)
       for row in reader1:
         critic = row['Critic/Publisher']
@@ -42,4 +43,4 @@ with sqlite3.connect('/Users/mosesfarley/metacritic_top10/metacritic_films/TopTe
   TopTen.executemany('INSERT INTO rankings VALUES (?, ?, ?)', rankings_list)
   c.commit()
 
-  #The count of film titles is far too high --> see if for loop fixes it. 
+  #eventually need to start working with relative file paths.
