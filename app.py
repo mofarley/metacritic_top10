@@ -5,7 +5,7 @@ from flask import Flask, flash, redirect, render_template, request
 import pandas as pd
 from helpers import add_user, cosine_similarity, find_user_id, critic_favorites
 
-path = os.path.dirname(os.path.realpath('metacritic_films'))
+path = os.path.dirname(os.path.realpath('metacritic_top10'))
 
 # Configure application
 app = Flask(__name__)

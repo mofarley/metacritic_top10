@@ -5,7 +5,7 @@ import pandas as pd
 from sqlite3 import connect
 import torch
 
-path = os.path.dirname(os.path.realpath('metacritic_films'))
+path = os.path.dirname(os.path.realpath('metacritic_top10'))
 
 def find_user_id():
 
@@ -82,7 +82,7 @@ def add_user(user_dict, user_id):
     return matrix_final
 
 
-def cosine_similarity(user_id, rankings_pd, k=5):
+def cosine_similarity(user_id, rankings_pd, k=10):
     #rankings_pd 
     
     cosine_dict = {}
