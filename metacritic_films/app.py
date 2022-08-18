@@ -5,6 +5,8 @@ from flask import Flask, flash, redirect, render_template, request
 import pandas as pd
 from helpers import add_user, cosine_similarity, find_user_id, critic_favorites
 
+path = os.path.dirname(os.path.realpath('metacritic_films'))
+
 # Configure application
 app = Flask(__name__)
 
@@ -18,7 +20,7 @@ def apology(code=400):
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    titles = connect('/Users/mosesfarley/metacritic_top10/metacritic_films/TopTen.db')
+    titles = connect(os.path.join(path, "TopTen.db"))
     if request.method == "POST":
         film1 = request.form.get("film_one")
         film2 = request.form.get("film_two")
@@ -90,9 +92,9 @@ def home():
         #TO DO
         # 1.DONE write descriptions for helper functions 
         # 2.DONE user_films.html: show cosine scores next to critic names. DONE --> down the road graphic display of calculation? 
-        # 3. user_films.html: provide links on critic names to list of their favorite films
+        # 3.DONE user_films.html: provide links on critic names to list of their favorite films
         # 4. think about changing input layout on home.html... make ranking of favorite films an option?
-        # 5. Grindy but... add top 10's for 2011 to 2014
+        # 5.DONE Grindy but... add top 10's for 2011 to 2014
         # ROUGH IDEAS
         # 6. import letterboxd lists???
         # 7. Add film recs based on critic recs (see "collaborative filtering recommendation engine for Anime")
