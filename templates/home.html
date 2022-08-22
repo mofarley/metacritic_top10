@@ -5,12 +5,15 @@
 {% endblock %}
 
 {% block main %}
+<header class="mb-5 small text-center text-muted">Don't worry too much about ranking the films - just try to get
+    your 10 favorites from the past 10 years!
+</header>
 <div class="container">
     <form action="/" method ="post" class="row justify-content-center" id="selections">
-        <div class="col-2">
-            <label for="film_one" class="form-label">Favorite Film</label>
+        <div class="col-3">
+            <label for="film_one" class="form-label">First</label>
         </div>
-        <div class="col-2">
+        <div class="col-7 align-self-center">
             <input class="form-control" list="datalistOptions" name="film_one" placeholder="Type to search...">
             <datalist id="datalistOptions">
                 {% for film in film_list %}
@@ -19,10 +22,10 @@
             </datalist>
         </div>
         <div class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <label for="film_two" class="form-label">Second</label>
             </div>
-            <div class="col-2">
+            <div class="col-7 align-self-center">
                 <input class="form-control" list="datalistOptions" name="film_two" placeholder="Type to search...">
                 <datalist id="datalistOptions">
                     {% for film in film_list %}
@@ -33,10 +36,10 @@
         </div>
         <!-- replace forms with rows -->
         <div class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <label for="film_three" class="form-label">Third</label>
             </div>
-            <div class="col-2">
+            <div class="col-7 align-self-center">
                 <input class="form-control" list="datalistOptions" name="film_three" placeholder="Type to search...">
                 <datalist id="datalistOptions">
                     {% for film in film_list %}
@@ -46,10 +49,10 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <label for="film_four" class="form-label">Fourth</label>
             </div>
-            <div class="col-2">
+            <div class="col-7 align-self-center">
                 <input class="form-control" list="datalistOptions" name="film_four" placeholder="Type to search...">
                 <datalist id="datalistOptions">
                     {% for film in film_list %}
@@ -59,10 +62,10 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <label for="film_five" class="form-label">Fifth</label>
             </div>
-            <div class="col-2">
+            <div class="col-7 align-self-center">
                 <input class="form-control" list="datalistOptions" name="film_five" placeholder="Type to search...">
                 <datalist id="datalistOptions">
                     {% for film in film_list %}
@@ -72,10 +75,10 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <label for="film_six" class="form-label">Sixth</label>
             </div>
-            <div class="col-2">
+            <div class="col-7 align-self-center">
                 <input class="form-control" list="datalistOptions" name="film_six" placeholder="Type to search...">
                 <datalist id="datalistOptions">
                     {% for film in film_list %}
@@ -85,10 +88,10 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <label for="film_seven" class="form-label">Seventh</label>
             </div>
-            <div class="col-2">
+            <div class="col-7 align-self-center">
                 <input class="form-control" list="datalistOptions" name="film_seven" placeholder="Type to search...">
                 <datalist id="datalistOptions">
                     {% for film in film_list %}
@@ -98,10 +101,10 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <label for="film_eight" class="form-label">Eighth</label>
             </div>
-            <div class="col-2">
+            <div class="col-7 align-self-center">
                 <input class="form-control" list="datalistOptions" name="film_eight" placeholder="Type to search...">
                 <datalist id="datalistOptions">
                     {% for film in film_list %}
@@ -111,10 +114,10 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <label for="film_nine" class="form-label">Ninth</label>
             </div>
-            <div class="col-2">
+            <div class="col-7 align-self-center">
                 <input class="form-control" list="datalistOptions" name="film_nine" placeholder="Type to search...">
                 <datalist id="datalistOptions">
                     {% for film in film_list %}
@@ -124,10 +127,10 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <label for="film_ten" class="form-label">Tenth</label>
             </div>
-            <div class="col-2">
+            <div class="col-7 align-self-center">
                 <input class="form-control" list="datalistOptions" name="film_ten" placeholder="Type to search...">
                 <datalist id="datalistOptions">
                     {% for film in film_list %}
@@ -143,4 +146,13 @@
         </div>
     </form>
 </div>
+{% if alert_msg != '' %}
+    <div class="row gy-2">
+        <div class="alert alert-warning" role="alert">
+            <div class="col align-self-center">
+            Try to enter 10 films without duplicates. Trust me, I know: it's actually harder than you'd think!
+            </div>
+        </div>
+    </div>
+{% endif %}
 {% endblock %}
