@@ -1,3 +1,4 @@
+from encodings import search_function
 import os
 import sqlite3
 from sqlite3 import connect
@@ -54,6 +55,7 @@ def home():
         film10 = request.form.get("film_ten")
         
         user_favs = {1:film1, 2:film2, 3:film3, 4:film4, 5:film5, 6:film6, 7:film7, 8:film8, 9:film9, 10:film10}
+        user_favs_list = list(user_favs.values())
         duplicate_check = set()
         for values in user_favs.values():
             if values == '':
@@ -82,10 +84,19 @@ def home():
 
         rt_search_list = []
 
+        publisher_csv = pd.read_csv(os.path.join(path, "publishers.csv"))
+        publisher_list = publisher_csv.values.tolist()
+
+
         for name in critic_match_list:
             search_name = name.replace(' ', '-').strip()
             #TO DO: if publisher render a different search 
-            rt_search = 'https://www.rottentomatoes.com/critics/{search_name}/movies'.format(search_name = search_name)
+            if name in publisher_list:
+                name = name.replace(' ', '+').strip()
+                search_name = '{query}+movie+reviews'.format(query=name)
+                rt_search = 'https://www.google.com/search?q={search_name}'.format(search_name=search_name)
+            else:
+                rt_search = 'https://www.rottentomatoes.com/critics/{search_name}/movies'.format(search_name = search_name)
             rt_search_list.append(rt_search)
 
 
@@ -97,7 +108,7 @@ def home():
         critic_favorites_list = critic_favorites(critic_matches)
         #To Do: use collapse bootstramp feature to display critic film lists 
         return render_template("user_films.html", user_favs=critic_match_list, scores=scores, length=num_critics, 
-        rt_search = rt_search_list, critic_movies = critic_favorites_list)
+        rt_search = rt_search_list, critic_movies = critic_favorites_list, user_list=user_favs_list)
    
     else:
 
@@ -107,8 +118,9 @@ def home():
         # 1.DONE write descriptions for helper functions 
         # 2.DONE user_films.html: show cosine scores next to critic names. DONE --> down the road graphic display of calculation? 
         # 3.DONE user_films.html: provide links on critic names to list of their favorite films
-        # 4. think about changing input layout on home.html... make ranking of favorite films an option?
+        # 4.BACKBURNER think about changing input layout on home.html... make ranking of favorite films an option?
         # 5.DONE Grindy but... add top 10's for 2011 to 2014
+        # 6. on user_films.html: add user picks drop down in white space next to Critic Matches header.
         # ROUGH IDEAS
         # 6. import letterboxd lists???
         # 7. Add film recs based on critic recs (see "collaborative filtering recommendation engine for Anime")
