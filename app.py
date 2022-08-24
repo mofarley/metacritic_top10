@@ -84,18 +84,21 @@ def home():
 
         rt_search_list = []
 
-        publisher_csv = pd.read_csv(os.path.join(path, "publishers.csv"))
-        publisher_list = publisher_csv.values.tolist()
+        publisher_csv = pd.read_csv(os.path.join(path, "databases/publishers.csv"))
+        publisher_list1 = publisher_csv.values.tolist()
+        publisher_list = []
+        for p in publisher_list1:
+            publisher_list.append(p[0])
 
 
         for name in critic_match_list:
-            search_name = name.replace(' ', '-').strip()
-            #TO DO: if publisher render a different search 
+            #if name is publisher: dont search rottentomatoes
             if name in publisher_list:
-                name = name.replace(' ', '+').strip()
-                search_name = '{query}+movie+reviews'.format(query=name)
+                publisher = name.replace(' ', '+').strip()
+                search_name = '{query}+movie+reviews'.format(query=publisher)
                 rt_search = 'https://www.google.com/search?q={search_name}'.format(search_name=search_name)
             else:
+                search_name = name.replace('.', '').replace(' ', '-').strip()
                 rt_search = 'https://www.rottentomatoes.com/critics/{search_name}/movies'.format(search_name = search_name)
             rt_search_list.append(rt_search)
 

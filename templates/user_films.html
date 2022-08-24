@@ -44,7 +44,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2" style="max-height: 50vh; overflow-y: auto;">
                         {% for movie in user_list %}
                             {% set film = movie.replace(' ', '-').lower().strip() %}
-                            <li><a class="dropdown-item" href="{{'https://www.metacritic.com/movie/{m}'.format(m = film)}}">{{ movie }}</a></li>
+                            <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="{{'https://www.metacritic.com/movie/{m}'.format(m = film)}}">{{ movie }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -59,7 +59,7 @@
                 </thead>
                 {% for i in range(length) %}
                     <tr>
-                        <td><a href="{{ rt_search[i] }}">{{ user_favs[i] }}</a></td>
+                        <td><a target="_blank" rel="noopener noreferrer" href="{{ rt_search[i] }}">{{ user_favs[i] }}</a></td>
                         <td>{{ "{:.0%}".format(scores[i]) }}</td>
                         <td>
                             <div class="dropdown">
@@ -69,7 +69,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="max-height: 50vh; overflow-y: auto;">
                                     {% for movie in critic_movies[i] %}
                                         {% set film = movie.replace(' ', '-').lower().strip() %}
-                                        <li><a class="dropdown-item" href="{{'https://www.metacritic.com/movie/{m}'.format(m = film)}}">{{ movie }}</a></li>
+                                        <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="{{'https://www.metacritic.com/movie/{m}'.format(m = film)}}">{{ movie }}</a></li>
                                     {% endfor %}
                                 </ul>
                               </div>
@@ -79,7 +79,7 @@
         </main>
 
         <footer class="mb-5 small text-center text-muted">
-            Checkout this project on <a href="https://github.com/mofarley/metacritic_top10.git">GitHub</a>
+            Checkout this project on <a target="_blank" rel="noopener noreferrer" href="https://github.com/mofarley/metacritic_top10.git">GitHub</a>
         </footer>
 
     </body>
