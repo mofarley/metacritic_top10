@@ -19,7 +19,8 @@ def find_user_id():
     #in reference to converted sql to pd db, the user id is appended to the end. Therefore, look at the last id index. 
     return(user_id)
 
-# I THINK THIS IS WHERE I SHOULD IMPLEMENT ZERO SKIP. 
+#ranking_database returns matrix without scoring implementation (just rankings)
+
 def add_user(user_dict, user_id):
     #this creates user ranking db and appends it to the end of general critic database. 
     conn = connect(os.path.join(path, "TopTen.db"))
@@ -82,35 +83,28 @@ def add_user(user_dict, user_id):
     return matrix_final
 
 
-def cosine_similarity(user_id, rankings_pd, k=10):
-    #rankings_pd 
-    
-    cosine_dict = {}
-   
-    #{critic_id: cosine similarity score}
-    #users = rankings_pd['critic_id'].unique().tolist()
+def score_conv(matrix_final):
+    for i in range(len(matrix_final)):
+        for x in range(len(matrix_final.columns)):
+            if matrix_final.iloc[i, x] == 0:
+                matrix_final.iloc[i, x] = -8
+            else:
+                matrix_final.iloc[i, x] = abs(matrix_final.iloc[i, x] - 11)
+    return matrix_final
 
-    #films = rankings_pd['film_id'].unique().tolist()
-    
 
-    cos0 = torch.nn.CosineSimilarity(dim=0)
-    #https://pytorch.org/docs/stable/generated/torch.nn.CosineSimilarity.html
-    
+def score(user_id, rankings_pd, k=10):
+    temp_dict = {}
     user = torch.tensor(rankings_pd[user_id].values)
-    # seems indexing (ex. rankings_matrix[5]) works along columns. a column shows all films for indexed critic
-    
     for i in range(1, len(rankings_pd.columns) + 1):
-        #cosine similarity calc for each critic
         if i == user_id:
             continue
-        #skip user cosine similarity calc
+            #skip user cosine similarity calc
         critic = torch.tensor(rankings_pd[i].values)
-        #see tensor image in readme section
-        output = cos0(user, critic)
-        cosine_dict.update({i: output.item()})
-        #append critic_id:cosine_similarity
-    output_dict = dict(sorted(cosine_dict.items(), key=lambda item: item[1], reverse=True))
-    #sorts by cosine_value (low to high) --> need to take some time to really understand lamba fx's
+        output = sum(user * critic)
+        output = (output + 440) / 990
+        temp_dict.update({i: output.item()})
+    output_dict = dict(sorted(temp_dict.items(), key=lambda item: item[1], reverse=True))
     output_ids = list(output_dict.keys())[:k]
     #final output of k amount of critic scores
     output_scores = list(output_dict.values())[:k]
@@ -119,13 +113,44 @@ def cosine_similarity(user_id, rankings_pd, k=10):
     
     return output_list
 
-def critic_favorites(critic_matches): #critic_matches == output_list from cosine_similarity
-    list_critic_favs = []
+#match_list = top scoring critics   &   matrix = ranking matrix 
+def ranking_dict(matrix, match_list):
+    conv_dict = {1:'1st', 2:'2nd', 3:'3rd', 4:'4th', 5:'5th', 6:'6th', 7:'7th', 8:'8th', 9:'9th', 10:'10th'}
+    conn = connect(os.path.join(path, "TopTen.db"))
+    critics = pd.read_sql('SELECT * FROM critics', conn)
+    films = pd.read_sql('SELECT * FROM films', conn)
+    conn.close()
+    rank_dict = {}
+    for n in match_list[0]:
+        temp_rank_dict = {}
+        rankings = matrix[n]
+        for x in range(10):
+            if rankings.iat[x] == 0:
+                continue
+            else:
+                film_name = films.loc[films['id'] == rankings.index[x], ['title']]
+                film_name = film_name.iat[0,0]
+                temp_dict = {film_name: conv_dict[rankings.iat[x]]}
+                temp_rank_dict.update(temp_dict)
+                #rank dict is {critic: {film:rank, ...}, 
+        get_name = critics.loc[critics['id'] == n, ['critic_name']]
+        critic_name = get_name.iat[0, 0]
+        critic_rank_dict = dict(sorted(temp_rank_dict.items(), key=lambda item: item[1]))
+        rank_dict.update({critic_name: critic_rank_dict})
+    return rank_dict
+        
+
+def critic_favorites(critic_matches): #critic_matches == output_list from scoring
+    dict_critic_favs = {}
     conn = connect(os.path.join(path, "TopTen.db"))
     for critic in critic_matches[0]:
+        critic_names = pd.read_sql('SELECT critic_name FROM critics WHERE id == {critic};'.format(critic = critic), conn)
+        critic_names = critic_names.iat[0,0]
         critic_favs_db = pd.read_sql('SELECT title FROM films WHERE id IN (SELECT film_id FROM rankings WHERE critic_id == {critic});'.format(critic = critic), conn)
         critic_favs = critic_favs_db['title'].tolist()
-        list_critic_favs.append(critic_favs)
+        dict_critic_favs.update({critic_names: critic_favs})
     conn.close()
-    return(list_critic_favs)
+    return(dict_critic_favs)
 
+
+#potential TODO: add new score to display -> add critic scores by 440 (-440 is minimum score) and divide by 990 (abs[-440] + max=550). 

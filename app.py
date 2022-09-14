@@ -2,9 +2,10 @@ from encodings import search_function
 import os
 import sqlite3
 from sqlite3 import connect
+from natsort import natsorted
 from flask import Flask, flash, redirect, render_template, request
 import pandas as pd
-from helpers import add_user, cosine_similarity, find_user_id, critic_favorites
+from helpers import add_user, find_user_id, ranking_dict, score, score_conv, critic_favorites
 
 path = os.path.dirname(os.path.realpath('metacritic_top10'))
 
@@ -34,8 +35,16 @@ def render_home(alert_msg):
 
         movies = movies[goof]
 
-        film_list = movies['title'].unique().tolist()
+        film_list = natsorted(movies['title'].unique().tolist())
 
+        for x in film_list:
+            if 'AND' in x:
+                film_list.remove(x)
+            elif x[-1] == ' ':
+                film_list.remove(x)
+            else:
+                continue
+        
         return render_template("home.html", film_list=film_list, alert_msg=alert_msg)
 
 @app.route("/", methods=["GET", "POST"])
@@ -54,6 +63,7 @@ def home():
         film9 = request.form.get("film_nine")
         film10 = request.form.get("film_ten")
         
+        ranking_str = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th']
         user_favs = {1:film1, 2:film2, 3:film3, 4:film4, 5:film5, 6:film6, 7:film7, 8:film8, 9:film9, 10:film10}
         user_favs_list = list(user_favs.values())
         duplicate_check = set()
@@ -67,9 +77,19 @@ def home():
             return render_home(alert)
         #dict of user film rankings 
         user_id = find_user_id()
+
         rankings = add_user(user_favs, user_id)
-        critic_matches = cosine_similarity(user_id, rankings)
+        #return matrix of ranks with rows = films ranked by user & columns = every critic
+
+        rankings_copy = rankings.copy()
+
+        scores = score_conv(rankings_copy)
+        #convert rankings matrix (see above 'rankings) to score matrix
+        
+        critic_matches = score(user_id, scores)
+        #returns 10 critics with highest total scores
         #for above 3: see helper.py
+
         
         critics = pd.read_sql('SELECT * FROM critics', titles)
 
@@ -90,8 +110,12 @@ def home():
         for p in publisher_list1:
             publisher_list.append(p[0])
 
+        critic_match_allmovies = critic_favorites(critic_matches)
+        #dict = {matched critic: [every movie they've ranked], ...}
 
-        for name in critic_match_list:
+        critic_fav_dict = ranking_dict(rankings, critic_matches)
+
+        for name in critic_fav_dict:
             #if name is publisher: dont search rottentomatoes
             if name in publisher_list:
                 publisher = name.replace(' ', '+').strip()
@@ -104,14 +128,10 @@ def home():
 
 
         num_critics = int(len(critic_match_list))
+        
 
-        scores = critic_matches[1]
-        #increment this in a new column
-
-        critic_favorites_list = critic_favorites(critic_matches)
-        #To Do: use collapse bootstramp feature to display critic film lists 
-        return render_template("user_films.html", user_favs=critic_match_list, scores=scores, length=num_critics, 
-        rt_search = rt_search_list, critic_movies = critic_favorites_list, user_list=user_favs_list)
+        return render_template("user_films.html", critic_movies = critic_match_allmovies, length=num_critics, 
+        rt_search = rt_search_list, critic_fav_dict = critic_fav_dict, user_list=user_favs_list)
    
     else:
 

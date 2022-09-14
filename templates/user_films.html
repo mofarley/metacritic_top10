@@ -47,29 +47,37 @@
                             <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="{{'https://www.metacritic.com/movie/{m}'.format(m = film)}}">{{ movie }}</a></li>
                         {% endfor %}
                     </ul>
+                    <p>(descending order)</p>
                 </div>
             <div class="col-8"><h2>Critic Matches</h2></div>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Similar Critics</th>
-                        <th>Similarity Score</th>
                         <th>Critic top ten's</th>
                     </tr>
                 </thead>
-                {% for i in range(length) %}
+                {% for i in critic_movies %}
+                {% set count = loop.index0 %}
                     <tr>
-                        <td><a target="_blank" rel="noopener noreferrer" href="{{ rt_search[i] }}">{{ user_favs[i] }}</a></td>
-                        <td>{{ "{:.0%}".format(scores[i]) }}</td>
+                        <td><a target="_blank" rel="noopener noreferrer" href="{{ rt_search[count] }}">{{ i }}</a></td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                   Film List
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="max-height: 50vh; overflow-y: auto;">
+                                    <!--convert all of this to new dict format i.e {critic: {film:rank, ...},  -->
+                                    {% for movie in critic_fav_dict[i].keys() %}
+                                    {% set film = movie.replace(' ', '-').lower().strip() %}
+                                        {% set rated_movie = "{film} : {rating}".format(film=movie, rating=critic_fav_dict[i][movie]) %}
+                                            <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" style="background-color:#dc35352e" href="{{'https://www.metacritic.com/movie/{m}'.format(m = film)}}">{{ rated_movie }}</a></li>
+                                    {% endfor %}
                                     {% for movie in critic_movies[i] %}
-                                        {% set film = movie.replace(' ', '-').lower().strip() %}
-                                        <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="{{'https://www.metacritic.com/movie/{m}'.format(m = film)}}">{{ movie }}</a></li>
+                                    {% set film = movie.replace(' ', '-').lower().strip() %}
+                                        {% if movie not in critic_fav_dict[i].keys() %}
+                                            <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer" href="{{'https://www.metacritic.com/movie/{m}'.format(m = film)}}">{{ movie }}</a></li>
+                                        {% endif %}
                                     {% endfor %}
                                 </ul>
                               </div>
