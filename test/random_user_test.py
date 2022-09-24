@@ -74,5 +74,4 @@ critic_dict = ranking_dict(rankings, critic_score)
             print('{m}: {b}'.format(m=m, b=critic_dict[x][m]))
         else:
             print(m)'''
-
-print(critic_score)
+print(rankings)

@@ -30,15 +30,7 @@ def add_user(user_dict, user_id):
     titles = pd.read_sql('SELECT * FROM films', conn)
 
     conn.close()
-
-    film_ids = rankings['film_id'].unique().tolist()
-    #convert to list for use as pd dataframe index
     
-    user_df_init = pd.DataFrame({'ranking': 0}, index=film_ids)
-    #initialize df with row values equaling rankings for each film id for user only 
-    
-    user_df_init = user_df_init.fillna(0)
-    #if user hasn't ranked film - fill as 0
     user_Title_list = list(user_dict.values())
     ''' make sure after title_to_id that dict order stays consistent '''
     user_ID_list = []
@@ -46,21 +38,10 @@ def add_user(user_dict, user_id):
         title_to_id = titles[titles['title'] == a]
         user_ID_list.append(int(title_to_id['id']))
 
-    user_isin_films = titles["title"].isin(user_Title_list)
-    #isin returns T/F for values passed to it --> if a row has passed value (i.e its in user_dict), it returns true. 
-    #Returns entire db of T/F
-    
-    user_films = titles[user_isin_films]
-    #runs T/F output against titles database and returns dataframe of (only) items that are True. 
-
-    rankings_temp = rankings['film_id'].isin(user_Title_list)
-
-    final_rankings = rankings[rankings_temp]
     
     user_df = pd.DataFrame({'film_id' : user_ID_list,
     'critic_id' : NaN, 'ranking' : user_dict.keys()})
-    
-    #temp fill NaN for critic_id bc want to fill that value with the user id 
+    #temp fill NaN for critic_id bc want to fill that value with the user id below
     
     user_df['critic_id'] = user_id
 
@@ -69,15 +50,11 @@ def add_user(user_dict, user_id):
     rankings_matrix = rankings_final.pivot_table(index='film_id',columns='critic_id',values='ranking')
 
     rankings_matrix = rankings_matrix.fillna(0)
-
-    
+   
     #print(rankings_matrix.loc[67:100, 605])
     #                         row     column
 
-
-
     matrix_final = rankings_matrix.loc[user_ID_list, :]
-
 
     #appends user ranking to the end of general critic rankings'''
     return matrix_final

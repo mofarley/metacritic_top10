@@ -3,7 +3,7 @@ import os
 import sqlite3
 from sqlite3 import connect
 from natsort import natsorted
-from flask import Flask, flash, redirect, render_template, request
+from flask import Flask, render_template, request
 import pandas as pd
 from helpers import add_user, find_user_id, ranking_dict, score, score_conv, critic_favorites
 
@@ -31,9 +31,9 @@ def render_home(alert_msg):
 
         filmID_list = ranking_filmIDS['film_id'].unique().tolist()
 
-        goof =  movies['id'].isin(filmID_list)
+        movie_filter =  movies['id'].isin(filmID_list)
 
-        movies = movies[goof]
+        movies = movies[movie_filter]
 
         film_list = natsorted(movies['title'].unique().tolist())
 
