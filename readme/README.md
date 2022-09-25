@@ -1,5 +1,5 @@
 # Critic Matching - Critic Top Ten lists
-#### Video Demo: <https://youtu.be/Dj3C7hkD3Vw>
+#### link: <https://metacritic-top10.herokuapp.com/>
 #### Description:
 
 As a lover of movie reviews, a problem I often run into is my penchant for looking at average movie review scores from sites like Metacritic and Rottentomatoes rather than reading individual reviews. I say this is a problem because while I think average scores serve as good indicators of a film’s general quality, they largely miss the mark on accounting for individual preferences. For example, when dealing with a genre of films I’m not particularly fond of (let’s say Westerns), a movie could score a 90 on metacritic or rottentomatoes, but it could oppose my preferences of fast plots and well defined protagonists/antagonists. However, included within that aggregate score of 90, there likely exists a critic whose preferences match up with mine, and in forming a general perspective of what movies I should spend my time watching, it may be better to look at scores from a critic who shares similar preferences to my own than at aggregate scores. This is main purpose of my project: to help users find critics who share similar preferences and to recommend movies that are preferred by matched critics.
